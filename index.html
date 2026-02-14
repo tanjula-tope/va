@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invite</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#111,#1f1f2e);
+  overflow:hidden;
+}
+
+/* CARD */
+.card{
+  width:90%;
+  max-width:360px;
+  padding:30px 24px;
+  border-radius:28px;
+  background:#fff;
+  box-shadow:0 25px 50px rgba(0,0,0,0.4);
+  text-align:center;
+  animation:fadeUp .5s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+  font-size:20px;
+  margin-bottom:22px;
+  color:#111;
+}
+
+/* INFO */
+.info{
+  margin-top:14px;
+  font-size:16px;
+  color:#333;
+  line-height:1.5;
+}
+
+/* BUTTONS */
+button{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border:none;
+  border-radius:16px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.yes{
+  background:#007aff;
+  color:white;
+}
+
+.yes:active{
+  transform:scale(.97);
+}
+
+.no{
+  background:#f2f2f7;
+  color:#111;
+  position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STEP 1 -->
+<div class="card" id="step1">
+  <h1>იქნები ჩემი ვალენტინი? 😏</h1>
+  <button class="yes" onclick="showPlan()">კი ❤️</button>
+  <button class="no" id="no" ontouchstart="move()" onmouseover="move()">არა 😅</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="card" id="step2" style="display:none;">
+  <h1>გეგმა 😎</h1>
+
+  <div class="info">
+    📍 მისამართი:<br>
+    საქართველო, ბათუმი,<br>
+    ნეპტუნის შადრევანი,<br>
+    
+  </div>
+
+  <div class="info">
+    ⏰ დრო: 20:30
+  </div>
+</div>
+
+<script>
+function showPlan(){
+  document.getElementById("step1").style.display="none";
+  document.getElementById("step2").style.display="block";
+}
+
+function move(){
+  const b=document.getElementById("no");
+  const x=Math.random()*(window.innerWidth-b.offsetWidth);
+  const y=Math.random()*(window.innerHeight-b.offsetHeight);
+  b.style.left=x+"px";
+  b.style.top=y+"px";
+}
+</script>
+
+</body>
+</html>
